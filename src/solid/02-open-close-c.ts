@@ -1,11 +1,17 @@
-import axios from 'axios';
+// import axios from 'axios';
 
 export class Httpclient{
 
+    // async get(url:string){
+    //     const {data, status} = await axios.get(url);
+    //     //console.log({status});
+    //     return {data,status};
+    // }
+
     async get(url:string){
-        const {data, status} = await axios.get(url);
-        //console.log({status});
-        return {data,status};
+        const resp = await fetch(url);
+        const data = await resp.json();
+        return {data, status: resp.status};
     }
 
 }
